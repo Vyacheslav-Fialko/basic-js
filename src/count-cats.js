@@ -1,8 +1,13 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function countCats(backyard) {
-  return backyard.reduce((count, item) => {
-    count += item.filter(el => el === '^^').length;
-    return count;
-  }, 0)
+  let count = 0;
+  for (let arr of backyard) {
+    for (let item of arr) {
+      if (item === '^^') {
+        count++;
+      }
+    }
+  }
+  return count;
 };
